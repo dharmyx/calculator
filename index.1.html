@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Calculator</title>
+        <style>
+            body {
+                margin: 100px;
+                text-align: center;
+                font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+            }
+            table {
+                border: solid #aaa 1px;
+                background-color: #ebf0ec;
+                border-radius: 5px;
+                margin: auto;
+
+            }
+            td {
+                border-right: solid #aaa 1px;
+                border-bottom: solid #aaa 1px;
+            }
+            #display {
+                text-align: right;
+                padding-right: 5px;
+                height: 60px;
+                background-color: #aaa;
+                color: #ffffff;
+                font-size: 42px;
+                font-weight: normal;
+                vertical-align: bottom;
+                width: 220px;
+            }
+            .func {
+                background-color: #f8f4f8;
+                height: 40px;
+                font-size: 20px;   
+            }
+            .number,
+            #zero,
+            #dot {
+                background-color: #f8f4f1;
+                height: 40px;
+                font-size: 20px;
+                width: 53.75px;
+            }
+            #zero {
+                text-align: left;
+                padding-left: 25px;
+            }
+            .op {
+                background-color: #fd9b08;
+                height: 40px;
+                font-size: 20px;
+                border-right: none;
+                color: white;
+            }
+            tr:last-child > td {
+                border-bottom: none;
+            }
+        </style>
+
+    </head>
+    <body>
+        <h2>Simple Calculator</h2>
+        <table id="Calculator" border="0" cellspacing="0">
+            <tr>
+                <th id="display" colspan="4">0</th>
+            </tr>
+            <tr>
+                <td class="func">AC</td>
+                <td class="func">+/-</td>
+                <td class="func">%</td>
+                <td class="op">&div;</td>
+            </tr>
+            <tr>
+                <td class="number">7</td>
+                <td class="number">8</td>
+                <td class="number">9</td>
+                <td class="op">&times;</td>
+            </tr>
+            <tr>
+                <td class="number">4</td>
+                <td class="number">5</td>
+                <td class="number">6</td>
+                <td class="op">-</td>
+            </tr>
+            <tr>
+                <td class="number">1</td>
+                <td class="number">2</td>
+                <td class="number">3</td>
+                <td class="op">+</td>
+            </tr>
+            <tr>
+                <td id="zero" colspan="2">0</td>
+                <td id="dot">.</td>
+                <td class="op">=</td>
+            </tr>
+        </table> 
+    </body>
+</html>
