@@ -1,1 +1,106 @@
 <!DOCTYPE html>
+<html>
+    <head>
+        <title>Calculator2</title>
+        <style>
+            body {
+                background-color: #efefef;
+                margin: 100px;
+                text-align: center;
+                font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+            }
+            table {
+                background-color: #efefef;
+                border-radius: 5px;
+                border: solid #aaa 1px;
+                margin: auto;
+            }
+            td {
+                border-right: solid #aaa 1px;
+                border-bottom: solid #aaa 1px;
+            }
+            #display {
+                background-color: #8a8686;
+                height: 80px;
+                width: 250px;
+                text-align: right;
+                padding-right: 20px;
+                font-size: 52px;
+                font-weight: 100;
+                vertical-align: bottom;
+                color: #ffffff;
+            }
+            .func {
+                background-color: #c9c5c5;
+                font-size: 18px;
+                height: 50px;
+                color: #000000;
+                font-weight: 200;
+            }
+            .number, #zero, #dot {
+                background-color: #dddada;
+                font-size: 24px;
+                height: 50px;
+                color: #000000;
+                width: 60px;
+                font-weight: 200;
+            }
+            #zero {
+                text-align: left;
+                padding-left: 27px;
+            }
+            #dot {
+                vertical-align: bottom;
+            }
+            .ops {
+                background-color: #f89f56;
+                color: #ffffff;
+                font-size: 30px;
+                font-weight: 200;
+                width: 60px;
+            }
+            tr:last-child > td {
+                border-bottom: none;
+            }
+        </style>
+    </head>
+    <body>
+        <h1>Simple Calculator2</h1>
+        <table id="Calculator2" border="0" cellspacing="0">
+            <tr>
+                <th id="display" colspan="4">0</th>
+            </tr>
+            <tr>
+                <td class="func">AC</td>
+                <td class="func">&PlusMinus;</td>
+                <td class="func">&percnt;</td>
+                <td class="ops">&div;</td>
+            </tr>
+            <tr>
+                <td class="number">7</td>
+                <td class="number">8</td>
+                <td class="number">9</td>
+                <td class="ops">&times;</td>
+            </tr>
+            <tr>
+                <td class="number">4</td>
+                <td class="number">5</td>
+                <td class="number">6</td>
+                <td class="ops">&minus;</td>
+            </tr>
+            <tr>
+                <td class="number">1</td>
+                <td class="number">2</td>
+                <td class="number">3</td>
+                <td class="ops">&plus;</td>
+            </tr>
+            <tr>
+                <td id="zero" colspan="2">0</td>
+                <td id="dot">&dot;</td>
+                <td class="ops">&equals;</td>
+            </tr>
+
+        </table>
+
+    </body>
+</html>
