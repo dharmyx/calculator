@@ -27,7 +27,7 @@
                 background-color: #8a8686;
                 height: 90px;
                 width: 250px;
-                max-width: 250px;
+                max-width: 7ch;
                 text-align: right;
                 padding-right: 20px;
                 font-size: 52px;
@@ -75,6 +75,7 @@
                 border: none;
                 cursor: pointer;
             }
+
             .top-function:hover,
             .number-button:hover,
             .btnZero:hover,
@@ -101,7 +102,8 @@
                 text-align: center;
             }
 
-            .ops, .button {
+            .ops,
+            .button {
                 background-color: #f89f56;
                 color: #ffffff;
                 font-size: 30px;
@@ -109,9 +111,11 @@
                 width: 60px;
                 cursor: pointer;
             }
+
             .button {
                 border-style: hidden;
             }
+
             .button:hover {
                 background-color: #ec6d04;
                 width: 100%;
@@ -139,7 +143,8 @@
                 </td>
             </tr>
             <tr>
-                <td class="number-button"><input type="button" class="number-button" onclick="showOnScreen(this)" value="7" /></td>
+                <td class="number-button"><input type="button" class="number-button" onclick="showOnScreen(this)"
+                        value="7" /></td>
                 <td class="number-button"><input type="button" onclick="showOnScreen(this)" value="8" /></td>
                 <td class="number-button"><input type="button" onclick="showOnScreen(this)" value="9" /></td>
                 <td class="ops">
@@ -195,6 +200,7 @@
                 }
                 startCollectingSecondNumber = false
             }
+
             function toggleSign() {
                 if (signed) {
                     display.innerText = display.innerText.substr(1)
@@ -204,12 +210,14 @@
                     signed = true
                 }
             }
+
             function clearDisplay(val) {
                 display.innerText = '0';
                 dotted = false
                 signed = false
                 op = null
             }
+
             function percentSign() {
                 display.innerText = parseFloat(display.innerText) / 100
             }
@@ -241,7 +249,7 @@
                         break;
                 }
 
-                display.innerHTML = value
+                display.innerHTML = +(Math.round(value + "e+" + 5) + "e-" + 5)
 
                 dotted = false
                 signed = false
