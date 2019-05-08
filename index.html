@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html>
+
     <head>
         <title>Calculator2</title>
         <style>
@@ -9,35 +10,44 @@
                 text-align: center;
                 font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
             }
+
             table {
                 background-color: #efefef;
                 border-radius: 5px;
                 border: solid #aaa 1px;
                 margin: auto;
             }
+
             td {
                 border-right: solid #aaa 1px;
                 border-bottom: solid #aaa 1px;
             }
+
             #display {
                 background-color: #8a8686;
-                height: 80px;
+                height: 90px;
                 width: 250px;
+                max-width: 250px;
                 text-align: right;
                 padding-right: 20px;
                 font-size: 52px;
                 font-weight: 100;
                 vertical-align: bottom;
                 color: #ffffff;
+                overflow-x: hidden;
             }
-            .func {
+
+            .top-function {
                 background-color: #c9c5c5;
                 font-size: 18px;
                 height: 50px;
                 color: #000000;
-                font-weight: 200;
+                font-weight: 300;
             }
-            .number, #zero, #dot {
+
+            .number-button,
+            #zero,
+            #dot {
                 background-color: #dddada;
                 font-size: 24px;
                 height: 50px;
@@ -45,25 +55,75 @@
                 width: 60px;
                 font-weight: 200;
             }
-            #zero {
+
+            .number-button>input {
+                background-color: #dddada;
+                font-size: 24px;
+                font-weight: 300;
+                height: 50px;
+                width: 100%;
+                border: none;
+                cursor: pointer;
+            }
+
+            .top-function>input {
+                background-color: #c9c5c5;
+                font-size: 20px;
+                font-weight: 100;
+                height: 50px;
+                width: 100%;
+                border: none;
+                cursor: pointer;
+            }
+            .top-function:hover,
+            .number-button:hover,
+            .btnZero:hover,
+            .btnDot:hover {
+                color: #ffffff;
+                background-color: #aaa;
+            }
+
+            .btnZero,
+            .btnDot {
+                background-color: #dddada;
+                font-size: 24px;
+                font-weight: 300;
+                height: 50px;
+                width: 100%;
+                border: none;
+                cursor: pointer;
                 text-align: left;
-                padding-left: 27px;
+                padding-left: 25px;
             }
-            #dot {
-                vertical-align: bottom;
+
+            .btnDot {
+                padding: 5px;
+                text-align: center;
             }
-            .ops {
+
+            .ops, .button {
                 background-color: #f89f56;
                 color: #ffffff;
                 font-size: 30px;
                 font-weight: 200;
                 width: 60px;
+                cursor: pointer;
             }
-            tr:last-child > td {
+            .button {
+                border-style: hidden;
+            }
+            .button:hover {
+                background-color: #ec6d04;
+                width: 100%;
+                height: 50px;
+            }
+
+            tr:last-child>td {
                 border-bottom: none;
             }
         </style>
     </head>
+
     <body>
         <h1>Simple Calculator2</h1>
         <table id="Calculator2" border="0" cellspacing="0">
@@ -71,36 +131,125 @@
                 <th id="display" colspan="4">0</th>
             </tr>
             <tr>
-                <td class="func">AC</td>
-                <td class="func">&PlusMinus;</td>
-                <td class="func">&percnt;</td>
-                <td class="ops">&div;</td>
+                <td class="top-function"><input type="button" onclick="clearDisplay(this)" value="c" /></td>
+                <td class="top-function"><input type="button" onclick="toggleSign(this)" value="&PlusMinus;" /></td>
+                <td class="top-function"><input type="button" onclick="percentSign(this)" value="&percnt;" /></td>
+                <td class="ops">
+                    <button class="button" onclick="operate(this)" value="/">&div;</button>
+                </td>
             </tr>
             <tr>
-                <td class="number">7</td>
-                <td class="number">8</td>
-                <td class="number">9</td>
-                <td class="ops">&times;</td>
+                <td class="number-button"><input type="button" class="number-button" onclick="showOnScreen(this)" value="7" /></td>
+                <td class="number-button"><input type="button" onclick="showOnScreen(this)" value="8" /></td>
+                <td class="number-button"><input type="button" onclick="showOnScreen(this)" value="9" /></td>
+                <td class="ops">
+                    <button class="button" onclick="operate(this)" value="x">&times;</button>
+                </td>
             </tr>
             <tr>
-                <td class="number">4</td>
-                <td class="number">5</td>
-                <td class="number">6</td>
-                <td class="ops">&minus;</td>
+                <td class="number-button"><input type="button" onclick="showOnScreen(this)" value="4" /></td>
+                <td class="number-button"><input type="button" onclick="showOnScreen(this)" value="5" /></td>
+                <td class="number-button"><input type="button" onclick="showOnScreen(this)" value="6" /></td>
+                <td class="ops">
+                    <button class="button" onclick="operate(this)" value="-">&minus;</button>
+                </td>
             </tr>
             <tr>
-                <td class="number">1</td>
-                <td class="number">2</td>
-                <td class="number">3</td>
-                <td class="ops">&plus;</td>
+                <td class="number-button"><input type="button" onclick="showOnScreen(this)" value="1" /></td>
+                <td class="number-button"><input type="button" onclick="showOnScreen(this)" value="2" /></td>
+                <td class="number-button"><input type="button" onclick="showOnScreen(this)" value="3" /></td>
+                <td class="ops">
+                    <button class="button" onclick="operate(this)" value="+">&plus;</button>
+                </td>
             </tr>
             <tr>
-                <td id="zero" colspan="2">0</td>
-                <td id="dot">&dot;</td>
-                <td class="ops">&equals;</td>
+                <td id="zero" colspan="2"><input type="button" class="btnZero" onclick="showOnScreen(this)" value="0" />
+                </td>
+                <td id="dot"><input type="button" class="btnDot" onclick="showOnScreen(this)" value="." /></td>
+                <td class="ops">
+                    <button class="button" onclick="equalsTo(this)">&equals;</button>
+                </td>
             </tr>
 
         </table>
+        <script>
+            var display = document.getElementById("display")
+            var signed = false
+            var dotted = false
+            var firstNumber = 0
+            var op = null
+            var startCollectingSecondNumber = false
 
+            function showOnScreen(btn) {
+                var x = btn.value;
+                if (x == '.') {
+                    if (dotted) {
+                        return
+                    }
+                    dotted = true
+                }
+                if (startCollectingSecondNumber || (display.innerText == '0' && x != '.')) {
+                    display.innerText = x;
+                } else {
+                    display.innerText += x;
+                }
+                startCollectingSecondNumber = false
+            }
+            function toggleSign() {
+                if (signed) {
+                    display.innerText = display.innerText.substr(1)
+                    signed = false
+                } else if (display.innerText != '0') {
+                    display.innerText = '-' + display.innerText
+                    signed = true
+                }
+            }
+            function clearDisplay(val) {
+                display.innerText = '0';
+                dotted = false
+                signed = false
+                op = null
+            }
+            function percentSign() {
+                display.innerText = parseFloat(display.innerText) / 100
+            }
+
+            function operate(btn) {
+                if (firstNumber && op) {
+                    firstNumber = equalsTo()
+                } else {
+                    firstNumber = parseFloat(display.innerText)
+                }
+                op = btn.value
+                startCollectingSecondNumber = true
+            }
+
+            function equalsTo() {
+                var value = 0
+                switch (op) {
+                    case '/':
+                        value = firstNumber / parseFloat(display.innerText)
+                        break;
+                    case 'x':
+                        value = firstNumber * parseFloat(display.innerText)
+                        break;
+                    case '-':
+                        value = firstNumber - parseFloat(display.innerText)
+                        break;
+                    case '+':
+                        value = firstNumber + parseFloat(display.innerText)
+                        break;
+                }
+
+                display.innerHTML = value
+
+                dotted = false
+                signed = false
+                op = null
+
+                return value
+            }
+        </script>
     </body>
+
 </html>
