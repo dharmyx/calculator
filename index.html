@@ -186,6 +186,12 @@
             var startCollectingSecondNumber = false
 
             function showOnScreen(btn) {
+                let
+                currentDisplayLength=display.innerText.length;
+
+                if (currentDisplayLength>=8) {
+                    return;
+                }
                 var x = btn.value;
                 if (x == '.') {
                     if (dotted) {
