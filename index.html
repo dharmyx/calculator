@@ -47,7 +47,8 @@
 
             .number-button,
             #zero,
-            #dot {
+            #dot,
+            #del {
                 background-color: #dddada;
                 font-size: 24px;
                 height: 50px;
@@ -76,16 +77,18 @@
                 cursor: pointer;
             }
 
-            .top-function:hover,
             .number-button:hover,
+            .top-function:hover,
             .btnZero:hover,
-            .btnDot:hover {
+            .btnDot:hover,
+            .btnDel:hover {
                 color: #ffffff;
-                background-color: #aaa;
+                background-color: #000;
             }
 
             .btnZero,
-            .btnDot {
+            .btnDot,
+            .btnDel {
                 background-color: #dddada;
                 font-size: 24px;
                 font-weight: 300;
@@ -97,7 +100,8 @@
                 padding-left: 25px;
             }
 
-            .btnDot {
+            .btnDot,
+            .btnDel {
                 padding: 5px;
                 text-align: center;
             }
@@ -168,9 +172,10 @@
                 </td>
             </tr>
             <tr>
-                <td id="zero" colspan="2"><input type="button" class="btnZero" onclick="showOnScreen(this)" value="0" />
+                <td id="zero"><input type="button" class="btnZero" onclick="showOnScreen(this)" value="0" />
                 </td>
                 <td id="dot"><input type="button" class="btnDot" onclick="showOnScreen(this)" value="." /></td>
+                <td id="del"><input type="button" class="btnDel" onclick="showOnScreen(this)" value="del" /></td>
                 <td class="ops">
                     <button class="button" onclick="equalsTo(this)">&equals;</button>
                 </td>
