@@ -1,137 +1,22 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
     <head>
-        <title>Calculator2</title>
-        <style>
-            body {
-                background-color: #efefef;
-                margin: 100px;
-                text-align: center;
-                font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-            }
-
-            table {
-                background-color: #efefef;
-                border-radius: 5px;
-                border: solid #aaa 1px;
-                margin: auto;
-            }
-
-            td {
-                border-right: solid #aaa 1px;
-                border-bottom: solid #aaa 1px;
-            }
-
-            #display {
-                background-color: #8a8686;
-                height: 90px;
-                width: 250px;
-                max-width: 7ch;
-                text-align: right;
-                padding-right: 20px;
-                font-size: 52px;
-                font-weight: 100;
-                vertical-align: bottom;
-                color: #ffffff;
-                overflow-x: hidden;
-            }
-
-            .top-function {
-                background-color: #c9c5c5;
-                font-size: 18px;
-                height: 50px;
-                color: #000000;
-                font-weight: 300;
-            }
-
-            .number-button,
-            #zero,
-            #dot,
-            #del {
-                background-color: #dddada;
-                font-size: 24px;
-                height: 50px;
-                color: #000000;
-                width: 60px;
-                font-weight: 200;
-            }
-
-            .number-button>input {
-                background-color: #dddada;
-                font-size: 24px;
-                font-weight: 300;
-                height: 50px;
-                width: 100%;
-                border: none;
-                cursor: pointer;
-            }
-
-            .top-function>input {
-                background-color: #c9c5c5;
-                font-size: 20px;
-                font-weight: 100;
-                height: 50px;
-                width: 100%;
-                border: none;
-                cursor: pointer;
-            }
-
-            .top-function:hover,
-            .btnDel:hover {
-                color: #ffffff;
-                background-color: #aaa;
-            }
-
-            .btnZero,
-            .btnDot,
-            .btnDel {
-                background-color: #dddada;
-                font-size: 24px;
-                font-weight: 300;
-                height: 50px;
-                width: 100%;
-                border: none;
-                cursor: pointer;
-                text-align: left;
-                padding-left: 25px;
-            }
-
-            .btnDot,
-            .btnDel {
-                padding: 5px;
-                text-align: center;
-            }
-
-            .ops,
-            .button {
-                background-color: #f89f56;
-                color: #ffffff;
-                font-size: 30px;
-                font-weight: 200;
-                width: 60px;
-                cursor: pointer;
-            }
-
-            .button {
-                border-style: hidden;
-            }
-
-            .button:hover {
-                background-color: #ec6d04;
-                width: 100%;
-                height: 50px;
-            }
-
-            tr:last-child>td {
-                border-bottom: none;
-            }
-        </style>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>Simple Calculator</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="style.css">
+        <link rel="stylesheet" type="text/css" href="fontawesome-with-css/css/all.min.css">
+        <link rel="icon" type="image/png" href="#" sizes="16x16">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap">
     </head>
 
     <body>
-        <h1>Simple Calculator2</h1>
-        <table id="Calculator2" border="0" cellspacing="0">
+        <div class="label">Simple Calculator</div>
+    <div class="calcContent">    
+        <table class="Calculator2" border="0" cellspacing="0">
             <tr>
                 <th id="display" colspan="4">0</th>
             </tr>
@@ -177,103 +62,9 @@
                     <button class="button" onclick="equalsTo(this)">&equals;</button>
                 </td>
             </tr>
-
         </table>
-        <script>
-            var display = document.getElementById("display")
-            const del = document.getElementsByClassName("btnDel")
-            var signed = false
-            var dotted = false
-            var firstNumber = 0
-            var op = null
-            var startCollectingSecondNumber = false
-
-            function showOnScreen(btn) {
-                let
-                currentDisplayLength = display.innerText.length;
-
-                if (currentDisplayLength>=9) {
-                    return;
-                }
-                var x = btn.value;
-                if (x == '.') {
-                    if (dotted) {
-                        return
-                    }
-                    dotted = true
-                }
-                if (startCollectingSecondNumber || (display.innerText == '0' && x != '.')) {
-                    display.innerText = x;
-                } else {
-                    display.innerText += x;
-                }
-                startCollectingSecondNumber = false
-            }
-
-            function toggleSign() {
-                if (signed) {
-                    display.innerText = display.innerText.substr(1)
-                    signed = false
-                } else if (display.innerText != '0') {
-                    display.innerText = '-' + display.innerText
-                    signed = true
-                }
-            }
-
-            function clearDisplay(val) {
-                display.innerText = '0';
-                dotted = false
-                signed = false
-                op = null
-            }
-
-            function backSpace() {
-                let curDisplay = display.innerText;
-                curDisplay = curDisplay.slice(0, -1);
-                display.innerHTML = curDisplay;
-            };
-            del[0].addEventListener("click", backSpace, false);
-
-            function percentSign() {
-                display.innerText = parseFloat(display.innerText) / 100
-            }
-
-            function operate(btn) {
-                if (firstNumber && op) {
-                    firstNumber = equalsTo()
-                } else {
-                    firstNumber = parseFloat(display.innerText)
-                }
-                op = btn.value
-                startCollectingSecondNumber = true
-            }
-
-            function equalsTo() {
-                var value = 0
-                switch (op) {
-                    case '/':
-                        value = firstNumber / parseFloat(display.innerText)
-                        break;
-                    case 'x':
-                        value = firstNumber * parseFloat(display.innerText)
-                        break;
-                    case '-':
-                        value = firstNumber - parseFloat(display.innerText)
-                        break;
-                    case '+':
-                        value = firstNumber + parseFloat(display.innerText)
-                        break;
-                }
-
-                display.innerHTML = +(Math.round(value + "e+" + 5) + "e-" + 5)
-
-                dotted = false
-                signed = false
-                op = null
-
-                return value
-            }
-        </script>
+    </div>
+        <script src="script.js"></script>
     </body>
 
 </html>
